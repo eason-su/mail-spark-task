@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+<property>
+<name>dfs.nameservices</name>
+<value>ai</value>
+</property>
+<property>
+<name>dfs.ha.namenodes.ai</name>
+<value>nn1,nn2</value>
+</property>
+<property>
+<name>dfs.namenode.rpc-address.ai.nn1</name>
+<value>172.172.0.11:9000</value>
+</property>
+<property>
+<name>dfs.namenode.rpc-address.ai.nn2</name>
+<value>172.172.0.12:9000</value>
+</property>
+
+<property>
+<name>dfs.namenode.http-address.ai.nn1</name>
+<value>172.172.0.11:50070</value>
+</property>
+<property>
+<name>dfs.namenode.http-address.ai.nn2</name>
+<value>172.172.0.12:50070</value>
+</property>
+<property>
+  <name>dfs.namenode.shared.edits.dir</name>
+  <value>qjournal://172.172.0.11:8485;172.172.0.12:8485;172.172.0.13:8485;172.172.0.14:8485;172.172.0.15:8485/aicluster</value>
+</property>
+
+<property>
+  <name>dfs.client.failover.proxy.provider.ai</name>
+  <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+</property>
+
+<property>
+  <name>dfs.ha.fencing.methods</name>
+  <value>sshfence</value>
+</property>
+
+<property>
+  <name>dfs.ha.fencing.ssh.private-key-files</name>
+  <value>/home/hadoop/.ssh/id_rsa</value>
+</property>
+
+<property>
+  <name>dfs.journalnode.edits.dir</name>
+  <value>/home/hadoop/software/hadoopdata/journal/data</value>
+</property>
+<property>
+   <name>dfs.ha.automatic-failover.enabled</name>
+   <value>true</value>
+</property>
+
+<property>
+    <name>dfs.namenode.name.dir</name>
+    <value>file:/home/hadoop/software/hadoopdata/dfs/name</value>
+</property>
+
+<property>
+    <name>dfs.datanode.data.dir</name>
+    <value>file:/home/hadoop/software/hadoopdata/dfs/data</value>
+</property>
+
+<property>
+    <name>dfs.replication</name>
+    <value>3</value>
+</property>
+
+<property>
+    <name>dfs.webhdfs.enabled</name>
+    <value>true</value>
+</property>
+<property>  
+    <name>dfs.permissions</name>  
+    <value>true</value>  
+</property>  
+<property>
+    <name>dfs.client.block.write.replace-datanode-on-failure.enable</name>
+    <value>true</value>
+</property>
+<property>
+    <name>dfs.client.block.write.replace-datanode-on-failure.policy</name>
+    <value>NEVER</value>
+</property>
+<property>
+    <name>dfs.datanode.max.xcievers</name>
+    <value>4096</value>
+</property>
+<property>
+    <name>dfs.datanode.balance.bandwidthPerSec</name>
+    <value>104857600</value>
+</property>
+<property>
+    <name>dfs.qjournal.write-txns.timeout.ms</name>
+    <value>120000</value>
+</property>
+</configuration>
